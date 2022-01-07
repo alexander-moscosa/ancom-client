@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles_ec_room.css">
+    <title>AnCom - Enter/Create Room</title>
+</head>
+<body>
+    <div class="content">
+        <div class="ancom_enter_create_room_card">
+            <span id="error"></span>
+            
+            <h1>AnCom</h1>
+
+            <button class="room_button" id="enter_room_button">
+                Enter Room
+            </button>
+            
+            <form class="room_form" id="enter_room_form">
+                <div class="label_room">
+                    <h3>Enter Room</h3>
+                </div>
+                <input type="text" autocomplete="off" placeholder="Username" id="username_input_enter"> 
+                <input type="text" autocomplete="off" placeholder="Code" id="code_input_enter">
+                <input type="submit" value="Enter">
+            </form>
+            
+            <button class="room_button" id="create_room_button">
+                Create Room
+            </button>
+
+            <form class="room_form" id="create_room_form">
+                <div class="label_room">
+                    <h3>Create Room</h3>
+                </div>
+                <input type="text" autocomplete="off" placeholder="Username" id="username_input_create">
+                <input type="submit" value="Create Room">
+            </form>
+
+        </div>
+    </div>
+    <script src="./js/ec_room_front.js"></script>
+    <script src="./js/ec_room.js"></script>
+</body>
+</html>
