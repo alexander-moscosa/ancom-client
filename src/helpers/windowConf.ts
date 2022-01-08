@@ -1,3 +1,4 @@
+import { BrowserWindow } from 'electron';
 
 export const windowConf = (title: string) => {
 
@@ -10,6 +11,7 @@ export const windowConf = (title: string) => {
         minWidth: 700,
         center: true,
         title,
+        backgroundColor: '#121212',
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
