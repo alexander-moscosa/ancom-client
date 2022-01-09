@@ -22,7 +22,9 @@ export const ec_window = (): void => {
 }
 
 export const sendData_ec_window = ( event: string, data: any ): void => {
-    window.webContents.send(event, data);
+    window.webContents.on('did-finish-load', () => {
+        window.webContents.send(event, data);
+    });
 }
 
 export const close_ec_window = (): void => {
