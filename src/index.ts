@@ -30,7 +30,7 @@ ipcMain.on('room:create', ( e, username ) => {
     } else {
         create_window();
         sendData_create_window('new-room-created', { username, code });
-        setTimeout(() => {close_create_window()}, 3000);
+        setTimeout(() => {close_create_window()}, 5000);
     }
 });
 
