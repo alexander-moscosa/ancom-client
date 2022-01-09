@@ -1,6 +1,6 @@
 "use strict"
 
-const websocket_server = "http://localhost:8080";
+const websocket_server = "https://ancom-server.herokuapp.com";
 
 const audio = new Audio('./audio/new_message2.mp3');
 
