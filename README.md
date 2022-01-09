@@ -16,7 +16,7 @@ Ancom Client is a cross-platform desktop application for completely anonymous ch
 
 <br>
 
-This application is completely made in Electron JS and the cornerstone of AnCom is the Socket.io library, which we use to establish the communication between the server and the client. The server is made in NodeJS, it receives events with which it handles information, such as sending a message to all the clients in a room. 
+This application is completely made in Electron JS and the cornerstone of AnCom is the Socket.io library, which we use to establish the communication between the [server](https://github.com/alexander-moscosa/ancom-server) and the client. The [server](https://github.com/alexander-moscosa/ancom-server) is made in NodeJS, it receives events with which it handles information, such as sending a message to all the clients in a room. 
 
 <br>
 
