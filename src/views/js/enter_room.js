@@ -16,6 +16,20 @@ const online = document.querySelector('#online_users_cards');
 
 const form_chat_functions = document.querySelector('.chat_functions');
 const messages_content = document.querySelector('.messages_content');
+const leave_button = document.querySelector("#leave");
+
+// Front
+
+window.setInterval(() => {
+    const messages_content = document.querySelector('.messages_content');
+    messages_content.scrollTop = messages_content.scrollHeight;
+}, 1000)
+
+leave_button.addEventListener('click', (e) => {
+    ipcRenderer.send('leave-room', true);
+});
+
+// Back
 
 ipcRenderer.on('data:from-ec', (e, data) => {
     
@@ -48,23 +62,23 @@ ipcRenderer.on('data:from-ec', (e, data) => {
 
         let input_message = document.querySelector('#input_message');
 
-        messages_content.innerHTML += `
-            <div class="message_sent_body">
-                <div class="message_sent_content">
-                    <div class="author_sent">
-                        <span id="author_sent">${ data.username }</span>
-                    </div>
-                    <div class="message_sent">
-                        <span id="message_sent">${ input_message.value }</span>
+        if ( input_message.value.trim().length !== 0 ) {
+            messages_content.innerHTML += `
+                <div class="message_sent_body">
+                    <div class="message_sent_content">
+                        <div class="author_sent">
+                            <span id="author_sent">${ data.username }</span>
+                        </div>
+                        <div class="message_sent">
+                            <span id="message_sent">${ input_message.value }</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
 
-        socket.emit('message', { username: data.username, message: input_message.value });
-
-        input_message.value = '';
-
+            socket.emit('message', { username: data.username, message: input_message.value });
+            input_message.value = '';
+        }
     });
 
 });
@@ -73,7 +87,7 @@ socket.on('new-message', ({id, username, message}) => {
 
     audio.play();
 
-    if ( id !== socket.id ) {
+    if ( id !== socket.id && message.trim().length !== 0 ) {
         messages_content.innerHTML += `
         <div class="message_received_body">
             <div class="message_received_content">

@@ -1,6 +1,6 @@
 "use strict"
 
-const websocket_server = "http://localhost:8080";
+//const websocket_server = "http://localhost:8080";
 
 const { ipcRenderer } = require('electron');
 
@@ -18,6 +18,11 @@ ipcRenderer.on('error:blank-fields', (e, data) => {
 });
 
 ipcRenderer.on('error:no-room-returned', (e, data) => {
+    error_span.style.display = 'block';
+    error_span.innerHTML = data;
+});
+
+ipcRenderer.on('error:large-name', ( e, data ) => {
     error_span.style.display = 'block';
     error_span.innerHTML = data;
 });

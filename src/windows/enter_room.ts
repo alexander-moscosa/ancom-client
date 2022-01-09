@@ -2,18 +2,17 @@ import { BrowserWindow, Menu } from 'electron';
 import { windowConf } from '../helpers/windowConf';
 
 import path from 'path';
-import { ec_window } from './ec_room';
-import { ec_room_template } from '../templates/ec_room.template';
+import { enter_room_template } from '../templates/enter_room.template';
 
 let enter_window: BrowserWindow;
 
 export const enter_room_window = (): void => {
 
-    const conf = windowConf('AnCom - Guest');
+    const conf = windowConf('AnCom - Room', true, 600, 700);
 
     enter_window = new BrowserWindow(conf);
 
-    const menu: Menu = Menu.buildFromTemplate(ec_room_template);
+    const menu: Menu = Menu.buildFromTemplate(enter_room_template);
     Menu.setApplicationMenu(menu);
     
     enter_window.loadFile( path.resolve( __dirname, '../../src/views/enter_room.html' ) );

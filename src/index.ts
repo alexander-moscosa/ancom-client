@@ -1,6 +1,7 @@
 import { app, ipcMain } from 'electron';
 import { ec_window, sendData_ec_window, close_ec_window } from './windows/ec_room';
 import { enter_room_window, sendData_enter_window, close_enter_window } from './windows/enter_room';
+import { create_window, sendData_create_window, close_create_window } from './windows/create_room';
 
 app.whenReady().then( () => {
     ec_window();
@@ -22,14 +23,24 @@ ipcMain.on('room:enter', (e, { username, code }) => {
 
 ipcMain.on('room:create', ( e, username ) => {
 
+    const code = Math.floor(Math.random() * 100000).toString();  
+
     if ( username.trim().length === 0 ) {
         sendData_ec_window('error:blank-fields', 'Fill The Fields Correctly');
+    } else {
+        create_window();
+        sendData_create_window('new-room-created', { username, code });
+        setTimeout(() => {close_create_window()}, 3000);
     }
-
 });
 
 ipcMain.on('error:no-room', ( e, data ) => {
     close_enter_window();
     ec_window();    
     sendData_ec_window('error:no-room-returned', data);
+});
+
+ipcMain.on('leave-room', (e, data) => {
+    close_enter_window();
+    ec_window();
 });

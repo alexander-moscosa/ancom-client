@@ -213,6 +213,7 @@
     background-color: rgb(24,25,26);
     overflow-y: scroll;
     width: 100%;
+    scroll-behavior: auto;
 }
 
 .message_sent_body {

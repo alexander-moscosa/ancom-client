@@ -7,7 +7,7 @@ let window: BrowserWindow;
 
 export const ec_window = (): void => {
 
-    const conf = windowConf('AnCom - Enter/Create a room');
+    const conf = windowConf('AnCom - Enter/Create a room', true, 600, 700);
 
     window = new BrowserWindow(conf);
 
